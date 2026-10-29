@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Токены дизайн-системы СК «Тёплый Угол»
+   Значения взяты из макета (Pen) - при правке макета править здесь.
+   ========================================================================== */
+
+:root {
+  /* --- Палитра: поверхности --- */
+  --page: #f3ecdf;
+  --page-warm: #f7f1e6;
+  --cream: #fffdf8;
+  --cream-100: #faf5ea;
+  --white: #ffffff;
+
+  /* --- Палитра: тёмные --- */
+  --ink: #1a1410;
+  --ink-2: #1f1612;
+  --ink-3: #241c16;
+
+  /* --- Палитра: акцент (золото) --- */
+  --gold: #d4ad6e;
+  --gold-strong: #a67c3a;
+  --gold-deep: #785728;
+  --gold-muted: #c19a5b;
+
+  /* --- Палитра: текст --- */
+  --text: #1a1410;
+  --text-soft: #1e140a;
+  --text-muted: #1e140ab8;
+  --text-on-dark: #fffdf8;
+  --text-on-dark-soft: #d8cfba;
+
+  /* --- Границы и тени --- */
+  --border-hairline: #1e140a24;
+  --border-gold: #d4ad6e8c;
+  --shadow-card: 0 12px 28px #785a321a;
+  --shadow-float: 0 10px 40px #00000026;
+
+  /* --- Радиусы (одна шкала на страницу) --- */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+
+  /* --- Типографика --- */
+  --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --logo-ink: #313e48;
+  --logo-accent: #e18335;
+  /* В строке цен нужен шрифт, содержащий знак рубля (U+20BD) -
+     в Manrope и JetBrains Mono его нет, из-за чего ₽ превращалась в «Р». */
+  --font-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --fs-display: 56px;
+  --fs-h2: 42px;
+  --fs-h3: 28px;
+  --fs-h4: 22px;
+  --fs-lg: 18px;
+  --fs-body: 15px;
+  --fs-sm: 13px;
+  --fs-label: 12px;
+  --fs-eyebrow: 12px;
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed: 1.55;
+
+  /* --- Сетка --- */
+  --container: 1200px;
+  --gutter: 24px;
+  /* Полная высота шапки вместе с нижней границей 1px: от неё считается
+     высота первого экрана, чтобы карточка не уезжала под сгиб. */
+  --header-h: 78px;
+  /* Ритм: один вертикальный шаг между блоками на всей странице.
+     Каждая секция получает половину, поэтому соседние дают ровно --section-gap. */
+  --section-gap: clamp(56px, 5vw, 80px);
+  /* Расстояние «заголовок блока → его содержимое». */
+  --stack-gap: 32px;
+
+  /* --- Радиусы: карточки 16, кнопки 12 (зафиксировано) --- */
+  --r-card: 16px;
+  --r-btn: 12px;
+
+  /* --- Формы --- */
+  --field-h: 45px;
+  --focus: 0 0 0 2px #fffdf8, 0 0 0 4px var(--gold-muted);
+
+  /* --- Motion --- */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ease: linear;
+  }
+}

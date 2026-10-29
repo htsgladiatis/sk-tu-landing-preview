@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Использование cookie-файлов · СК «Тёплый Угол»</title>
+<meta name="description" content="Какие cookie-файлы использует сайт СК «Тёплый Угол» и как управлять ими." />
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+<style>
+:root {
+  --paper: #f3ecdf;
+  --paper-2: #faf5ea;
+  --ink: #181008;
+  --cream: #fffdf8;
+  --gold: #d4ad6e;
+  --gold-2: #c19a5b;
+  --gold-deep: #7a5826;
+  --gold-soft: #e8c48a;
+  --text: #1a1410;
+  --muted: #5f5345;
+  --muted-2: #716454;
+  --text-on-dark: #fffdf8;
+  --text-on-dark-soft: #c9bca8;
+  --line: rgba(30, 20, 10, 0.14);
+  --line-gold-soft: rgba(212, 173, 110, 0.18);
+  --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper-2);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.doc-header {
+  background: var(--ink);
+  color: var(--text-on-dark);
+  padding: 14px clamp(16px, 4vw, 40px);
+}
+.doc-header__in {
+  max-width: 940px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.doc-header a.logo img { display: block; height: 32px; width: auto; }
+.doc-header .phone {
+  color: var(--text-on-dark);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.doc-header .phone:hover { color: var(--gold-soft); }
+.main { max-width: 720px; margin: 0 auto; padding: 44px clamp(16px, 4vw, 24px) 64px; }
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-bottom: 18px;
+}
+.breadcrumb a { color: var(--gold-deep); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.doc h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4.4vw, 44px);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.doc h2 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin: 30px 0 12px;
+}
+.doc p { margin: 0 0 10px; }
+.doc p + p { margin-top: -2px; }
+.doc b { font-weight: 700; }
+.doc a { color: var(--gold-deep); }
+.doc-footer {
+  border-top: 1px solid var(--line-gold-soft);
+  margin-top: 48px;
+  padding-top: 20px;
+  color: var(--muted-2);
+  font-size: 12.5px;
+}
+.doc-footer p { margin-bottom: 6px; }
+.doc-footer a { color: var(--gold-deep); text-decoration: none; border-bottom: 1px solid rgba(212, 173, 110, 0.4); }
+.doc-footer a:hover { color: var(--gold-2); }
+</style>
+</head>
+<body>
+<header class="doc-header">
+  <div class="doc-header__in">
+    <a class="logo" href="/" aria-label="Тёплый Угол: на главную">
+      <img src="/assets/img/logo-large-contrast.svg" alt="Тёплый Угол" width="180" height="32" />
+    </a>
+    <a class="phone" href="tel:+78122209663">+7 812 220-96-63</a>
+  </div>
+</header>
+<main class="main">
+  <nav class="breadcrumb" aria-label="Хлебные крошки">
+    <a href="/">Главная</a> / Cookie-файлы
+  </nav>
+  <article class="doc">
+    <h1>Использование cookie-файлов</h1>
+    <p>Cookie-файлы (cookies) - это небольшие текстовые файлы, которые сайт сохраняет в вашем браузере при посещении. Cookie-файлы позволяют сайту запоминать ваши действия и предпочтения за определенный период времени.</p>
+
+    <h2>Какие cookie-файлы мы используем</h2>
+    <p><b>Необходимые.</b> Обеспечивают работу сайта: безопасность форм, защиту от спама и проверку на роботов, сохранение вашего согласия с использованием cookie-файлов. Отключить их нельзя: без них формы сайта не работают.</p>
+    <p><b>Аналитические и статистические.</b> Собираются сервисами интернет-статистики в обезличенном виде: фиксируются действия на сайте, источник перехода (в т.ч. UTM-метки) и технические характеристики браузера. Данные помогают улучшать сайт.</p>
+    <p><b>Рекламно-информационные.</b> Могут использоваться для показа релевантных объявлений и напоминания о просмотренных проектах.</p>
+
+    <h2>Какие данные запоминаются</h2>
+    <p>При заполнении форм вы добровольно сообщаете имя, телефон и адрес электронной почты - эти данные обрабатываются по правилам <a href="/legal/">политики обработки персональных данных</a>. Cookie-файлы сами по себе не содержат ваших личных данных.</p>
+
+    <h2>Как управлять cookie-файлами</h2>
+    <p>Вы можете запретить или ограничить сохранение cookie-файлов в настройках своего браузера (обычно это раздел «Настройки», далее «Приватность» или «Конфиденциальность»). Учтите: при полном отключении cookie-файлов часть функций сайта, включая формы отправки заявок, может работать некорректно.</p>
+    <p>Аналитические сервисы также можно отключить отдельно - в настройках соответствующего сервиса или через расширения блокировки.</p>
+
+    <h2>Согласие</h2>
+    <p>Нажимая на кнопку «Согласен» в панели cookie-файлов, вы подтверждаете согласие с использованием cookie-файлов в соответствии с настоящим описанием и <a href="/legal/">политикой обработки персональных данных</a>. Согласие можно отозвать, удалив cookie-файлы в настройках браузера и (или) отключив сохранение cookie-файлов.</p>
+
+    <footer class="doc-footer">
+      <p>© 2010-2026 · СК «Тёплый Угол» · ООО «Тёплый-угол», ИНН 4703168597, ОГРН 1194704020830</p>
+      <p>
+        <a href="/legal/">Политика обработки персональных данных</a> ·
+        <a href="/newsletter-consent/">Согласие на рассылку</a> ·
+        <a href="/cookies/">Cookie-файлы</a>
+      </p>
+    </footer>
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,321 @@
+/* ==========================================================================
+   База: сброс, сетка, типографика, кнопки, формы
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+section[id],
+form[id],
+footer[id],
+#privacy {
+  scroll-margin-top: 90px;
+}
+
+#privacy {
+  scroll-margin-top: 110px;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* --- Сетка страницы -------------------------------------------------- */
+
+.container {
+  width: min(var(--container), calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* Один вертикальный ритм на всю страницу: соседние секции дают
+   ровно --section-gap между блоками, без локальных исключений. */
+.section {
+  padding-block: calc(var(--section-gap) / 2);
+}
+
+.section--tight {
+  padding-block: calc(var(--section-gap) / 4);
+}
+
+/* --- Типографика ------------------------------------------------------ */
+
+.eyebrow {
+  margin: 0;
+  color: var(--gold-deep);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 1.68px;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.h2 {
+  max-width: 16ch;
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  letter-spacing: -1.26px;
+  line-height: var(--lh-tight);
+}
+
+.h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  letter-spacing: -0.56px;
+  line-height: var(--lh-snug);
+}
+
+.lead {
+  max-width: 62ch;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-relaxed);
+}
+
+.num {
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+/* Manrope не содержит знака рубля (U+20BD) — браузер берёт его из
+   следующего шрифта в строке. Без этого «₽» рисуется как «Р». */
+.num,
+.mono,
+.project__price {
+  font-family: var(--font), var(--font-mono), system-ui, "Segoe UI", sans-serif;
+}
+
+/* --- Кнопки ----------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  background: var(--gold-deep);
+  color: var(--text-on-dark);
+  font-family: inherit;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  background: #5f451f;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.btn--ghost {
+  border-color: var(--gold-deep);
+  background: transparent;
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  background: #1e140a0d;
+}
+
+.btn--light {
+  background: var(--cream);
+  color: var(--text);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* --- Ссылки ----------------------------------------------------------- */
+
+.link {
+  color: inherit;
+  text-decoration-color: var(--gold-muted);
+  text-underline-offset: 3px;
+}
+
+.link:hover {
+  text-decoration-color: var(--gold-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-strong);
+  outline-offset: 2px;
+}
+
+/* --- Формы ------------------------------------------------------------ */
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field > label {
+  color: var(--gold-deep);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  height: var(--field-h);
+  padding: 0 14px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-sm);
+  background: var(--cream);
+  color: var(--text);
+  font-family: inherit;
+  font-size: var(--fs-body);
+}
+
+.field input::placeholder {
+  color: #5c5245;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--gold-muted);
+  box-shadow: 0 0 0 3px #d4ad6e26;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #b4472e;
+}
+
+.form__err {
+  display: none;
+  margin: 0;
+  color: #8f2f1d;
+  font-size: var(--fs-label);
+  line-height: 1.45;
+}
+
+.form__err:not([hidden]) {
+  display: block;
+}
+
+.section--dark .form__err {
+  color: #f0b09a;
+}
+
+.form__note {
+  color: var(--text-muted);
+  font-size: var(--fs-label);
+}
+
+.form__ok {
+  display: none;
+  padding: 14px;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--r-sm);
+  background: var(--cream-100);
+  color: var(--text);
+  font-size: var(--fs-sm);
+}
+
+.form.is-sent .form__ok {
+  display: block;
+}
+
+/* --- Служебное -------------------------------------------------------- */
+
+.eyebrow + .h2,
+.h2 + .lead,
+.h3 + p {
+  margin-top: 12px;
+}
+
+.lead + .ticks,
+.lead + .stats,
+.lead + .btn,
+.lead + .final__actions {
+  margin-top: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

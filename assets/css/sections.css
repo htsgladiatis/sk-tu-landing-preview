@@ -1,0 +1,1607 @@
+/* ==========================================================================
+   Секции лендинга СК «Тёплый Угол»
+   Пересобрано 21.10.2026 по макету Pen «СК ТУ — 1440 (дубликат)» (F62Qph):
+   8 секций — hero, «Почему доверяют стройку», видео ДК-34, каталог+форма,
+   избранные проекты, «Что дальше», живые кадры, часть построенных домов.
+   ========================================================================== */
+
+/* --- Шапка ------------------------------------------------------------ */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* Шапка в потоке, как в макете F62Qph: она не липнет и не съедает
+   экран — контент никогда не уезжает под неё. */
+.site-header {
+  position: relative;
+  z-index: 2;
+  background: var(--ink);
+  color: var(--text-on-dark);
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.site-header__row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: calc(var(--header-h) - 1px);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo img {
+  display: block;
+  width: 160px;
+  height: auto;
+}
+
+.logo__sub {
+  padding-left: 14px;
+  border-left: 0.8px solid var(--border-gold);
+  color: var(--text-on-dark-soft);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.logo--footer img {
+  width: 180px;
+}
+
+.site-nav {
+  display: flex;
+  gap: 20px;
+  margin-inline: auto;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text-on-dark-soft);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  color: var(--gold);
+}
+
+.burger {
+  display: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--r-btn);
+  background: transparent;
+  color: var(--text-on-dark);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.site-header__contacts {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-header__contacts .btn {
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.contact {
+  display: grid;
+  gap: 3px;
+}
+
+.contact__city {
+  color: #8d8271;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+.contact__tel {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #ebe3d8;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 18px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contact__tel:hover {
+  color: var(--gold);
+}
+
+/* Шапочный CTA — золотой градиент с тёмным текстом (как в макете). */
+.btn--gold {
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: var(--r-btn);
+  background-image: linear-gradient(104.982deg, var(--gold-strong) 14.645%, var(--gold-muted) 85.355%);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.btn--gold:hover {
+  background-image: linear-gradient(104.982deg, var(--gold-muted) 14.645%, var(--gold-strong) 85.355%);
+}
+
+.site-header .btn--ghost {
+  border-color: var(--border-gold);
+  color: var(--text-on-dark);
+}
+
+.site-header .btn--ghost:hover {
+  background: #fffdf814;
+}
+
+/* --- Hero ------------------------------------------------------------- */
+
+/* Первый экран = ровно высота окна минус шапка: ни контент, ни кнопки
+   не уезжают под сгиб. Высота карточки подгоняется под короткие экраны. */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(860px, calc(100svh - var(--header-h)));
+  overflow: hidden;
+  background: #0c0805;
+}
+
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Асимметричный вуаль: слева фото открыто, справа карточка читается. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: linear-gradient(90deg, #100b0700 34%, #100b074d 56%, #100b079e 100%);
+  pointer-events: none;
+}
+
+.hero__card {
+  position: relative;
+  z-index: 2;
+  width: min(560px, 100%);
+  padding: clamp(26px, 3vh, 40px) clamp(26px, 2.6vw, 40px);
+  border: 0.8px solid #c19a5b52;
+  border-radius: var(--r-card);
+  backdrop-filter: blur(2.5px);
+  background-image: linear-gradient(162.316deg, #20170fe6 9.013%, #120d09f0 90.987%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: var(--text-on-dark);
+  box-shadow: 0 24px 60px #3c281447;
+}
+
+/* Карточка прижата к правому краю контейнера — правый край совпадает
+   с сеткой всех остальных секций. */
+.hero .container {
+  display: flex;
+  justify-content: flex-end;
+  padding-block: clamp(16px, 3vh, 48px);
+}
+
+.hero__eyebrow {
+  width: fit-content;
+  padding: 5px 12px;
+  border: 0.8px solid #c19a5b4d;
+  border-radius: 9999px;
+  background: #c19a5b14;
+  color: var(--gold-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.76px;
+  line-height: 17px;
+}
+
+.hero__title {
+  margin: 14px 0 12px;
+  font-size: clamp(30px, min(3vw, 5.2vh), 52px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.07;
+  color: #ebe3d8;
+}
+
+.hero__sub {
+  color: #b3a693;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.45;
+}
+
+.hero__list {
+  display: grid;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.hero__list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.hero__list li::before {
+  content: "";
+  flex: 0 0 13px;
+  width: 13px;
+  height: 13px;
+  background: linear-gradient(135deg, #d4ad6e 14.645%, #a67c3a 85.355%);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px #1a1410, inset 0 0 0 4.4px #d4ad6e;
+}
+
+/* Цена — градиентный текст, не плоский цвет. */
+.hero__price {
+  margin-top: 14px;
+  font-size: clamp(28px, min(2vw, 3.8vh), 34px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 36px;
+  white-space: nowrap;
+  background-image: linear-gradient(0deg, var(--gold) 0%, var(--gold-muted) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero__mortgage {
+  margin-top: 6px;
+  color: #ffeccdd1;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(12px, 2vh, 22px);
+}
+
+/* В Pen обе кнопки hero — сплошная заливка r=12, отступ 14/30, по центру.
+   Вторая («Смотреть 175+ проектов», 230x51) с жемчужным корпусом. */
+.hero__card .btn {
+  min-height: 48px;
+  padding: 14px 30px;
+  justify-content: center;
+  background-image: linear-gradient(99.255deg, var(--gold-strong) 14.645%, var(--gold-muted) 85.355%);
+  border-radius: var(--r-btn);
+  box-shadow: 0 8px 24px #c19a5b66;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.hero__card .btn--solid {
+  min-height: 48px;
+  background-image: linear-gradient(99.255deg, var(--cream) 14.645%, var(--cream-100) 85.355%);
+  box-shadow: 0 8px 24px #00000026;
+  color: var(--ink);
+}
+
+.hero__card .btn:hover {
+  background-image: linear-gradient(99.255deg, var(--gold-muted) 14.645%, var(--gold-strong) 85.355%);
+}
+
+.hero__card .btn--solid:hover {
+  background-image: linear-gradient(99.255deg, var(--cream-100) 14.645%, var(--cream) 85.355%);
+}
+
+/* --- «Почему нам доверяют стройку» ------------------------------------- */
+
+/* Первая секция после full-bleed hero: единственное исключение из
+   правила «половина зазора с каждой стороны» — здесь фото упирается
+   в блок без нижнего отступа, поэтому берём полный шаг сверху. */
+.section--why {
+  padding-top: var(--section-gap);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: minmax(0, 560fr) minmax(0, 616fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.bento__photo {
+  position: relative;
+  height: 407px;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.bento__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bento__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #1b140d00 0%, #1b140d99 55%, #1b140dfa 100%);
+}
+
+.bento__photo-text {
+  position: absolute;
+  inset: auto 24px 24px;
+  z-index: 1;
+}
+
+.bento__eyebrow {
+  margin-bottom: var(--stack-gap);
+}
+
+.bento__big {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.bento__label {
+  margin: 6px 0 0;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.bento__desc {
+  color: #d8cfba;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+/* Тёмная панель фактов: белые карточки на бумаге больше не нужны. */
+.adv-panel {
+  display: grid;
+  gap: 28px;
+  height: 407px;
+  padding: 28px;
+  border-radius: var(--r-card);
+  background: var(--ink);
+  color: var(--text-on-dark);
+}
+
+.adv-panel__big {
+  font-size: 88px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  background-image: linear-gradient(135deg, #a67c3a 0%, #e8c48a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.adv-panel__label {
+  margin-top: 12px;
+  color: #d8cfba;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.adv-panel__desc {
+  margin-top: 6px;
+  color: #a89c8a;
+  font-size: 12.5px;
+  line-height: 19px;
+}
+
+.adv-panel__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gutter);
+  padding-top: 24px;
+  border-top: 1px solid #d4ad6e40;
+}
+
+.adv-panel__item {
+  position: relative;
+  padding-left: 14px;
+}
+
+.adv-panel__item + .adv-panel__item {
+  padding-left: 14px;
+  border-left: 1px solid #d4ad6e40;
+}
+
+.adv-panel__num {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.adv-panel__num--word {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.adv-panel__unit {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.adv-panel__item-label {
+  margin-top: 10px;
+  color: #d8cfba;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.adv-panel__item-desc {
+  margin-top: 4px;
+  color: #d8cfba;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* --- Видео-баннер ДК-34 (макет F62Qph, 435.8 px, r=22) ------------------ */
+
+.video-card {
+  position: relative;
+  display: block;
+  border-radius: 22px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-on-dark);
+  box-shadow: 0 24px 60px #3c2a0c2e;
+}
+
+.video-card__media {
+  width: 100%;
+  height: 436px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.video-card:hover .video-card__media {
+  transform: scale(1.02);
+}
+
+/* Вуаль из макета: тёмная слева, открывается к верхнему правому углу. */
+.video-card__veil {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    85.371deg,
+    #120b04b8 2.245%,
+    #120b0447 46.18%,
+    #120b0400 69.102%
+  );
+}
+
+/* Плашка «видео» в правом верхнем углу — из макета. */
+.video-card__badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 7px 14px;
+  border-radius: var(--r-pill);
+  background: #120b048c;
+  backdrop-filter: blur(3px);
+}
+
+.video-card__badge-icon {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 12px;
+}
+
+.video-card__badge-text {
+  color: #f4ead6;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.video-card__meta {
+  position: absolute;
+  inset: auto 56px 34px;
+  z-index: 2;
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+  max-width: 427px;
+}
+
+.video-card__eyebrow {
+  color: #e7c88b;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.video-card__title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 38px;
+  color: #ffffff;
+}
+
+.video-card__sub {
+  color: #fffaf0d9;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.video-card__cta {
+  margin-top: 12px;
+  padding: 11px 22px;
+  border-radius: var(--r-pill);
+  background-image: linear-gradient(103.63deg, #c19a5b 14.645%, #a67c3a 85.355%);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+/* --- Каталог ---------------------------------------------------------- */
+
+.catalog {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.catalog::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, #1a1410f0 0%, #1a14109c 40%, #1a1410d9 100%),
+    url("../../images/sk-tu/site/s08.jpg") center / cover no-repeat;
+}
+
+.catalog__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.catalog__title {
+  grid-column: 1;
+  max-width: none;
+  color: var(--text-on-dark);
+}
+
+.catalog__year {
+  color: var(--gold);
+}
+
+.catalog__photo {
+  grid-column: 1;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-card);
+}
+
+.card {
+  position: relative;
+  padding: 28px;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--r-card);
+  background: var(--cream);
+  box-shadow: var(--shadow-card);
+}
+
+/* Кнопка в карточке формы: золотой градиент с тёмным текстом (по макету). */
+.btn--gold {
+  min-height: 47px;
+  padding: 0 28px;
+  border-radius: var(--r-md);
+  background-image: linear-gradient(
+    96.83deg,
+    #e6c285 14.645%,
+    #d4ad6e 39.393%,
+    #c19a5b 60.607%,
+    #a67c3a 85.355%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-shadow: 0 10px 26px #a67c3a59;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.52px;
+  line-height: 13px;
+  white-space: nowrap;
+}
+
+.btn--gold:hover {
+  filter: brightness(1.05);
+}
+
+.catalog .card {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  padding: 32px 28.8px 26.8px;
+  border-width: 4px 0.8px 0.8px;
+  border-color: #c19a5b;
+  border-radius: 18px;
+  background-image: linear-gradient(180deg, #fffdf8 0%, #f6ecd6 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-shadow: 0 26px 60px #3c2a0c3d;
+}
+
+.card__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+}
+
+.card__sub {
+  margin: 8px 0 20px;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+}
+
+/* --- Избранные проекты ------------------------------------------------ */
+
+.eyebrow--center {
+  text-align: center;
+}
+
+.h2--center {
+  max-width: none;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.lead--center {
+  max-width: 560px;
+  margin: 16px auto 0;
+  text-align: center;
+}
+
+/* Одна колонка-сетка на три равные доли: крупная карточка занимает две
+   доли, боковая колонка — третью, нижний ряд — три доли. Поэтому правый
+   край обоих рядов совпадает с контейнером. */
+.featured {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 500px;
+  gap: var(--gutter);
+  margin-top: var(--stack-gap);
+}
+
+.featured__big {
+  grid-column: 1 / span 2;
+}
+
+/* Ряд из трёх карточек под бенто-блоком. */
+.featured--row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 340px;
+  margin-top: var(--gutter);
+}
+
+/* Правая колонка: две карточки одна под другой; их суммарная высота
+   равна высоте крупной карточки. */
+.featured__side {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.featured__figure,
+.featured__card {
+  position: relative;
+  margin: 0;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-card);
+}
+
+/* Высота задаётся рядом (`grid-auto-rows`), а карточки тянутся на 100%:
+   низ большого фото и низ правой колонки всегда на одной линии. */
+.featured__figure,
+.featured__card {
+  height: 100%;
+}
+
+/* Нижний ряд: три карточки одной высоты. */
+.featured--row .featured__card {
+  height: 100%;
+}
+
+.featured__figure img,
+.featured__card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Плотный скрим: подписи читаются и на светлом небе, и на снегу. */
+.featured__figure::after,
+.featured__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    180deg,
+    #0b070400 30%,
+    #0b0704a6 62%,
+    #0b0704f2 100%
+  );
+}
+
+/* Подписи — обычным потоком снизу, а не абсолютными bottom-отступами.
+   Поэтому строки не наезжают друг на друга ни на какой высоте карточки. */
+.featured__body {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  padding: 22px 24px 20px;
+}
+
+.featured__name {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-shadow: 0 1px 10px #00000094;
+}
+
+.featured__warm {
+  color: #fffdf8;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-shadow: 0 1px 10px #000000b3;
+}
+
+.featured__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.featured__spec {
+  color: #f0e7d8d9;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.featured__price {
+  color: #fffdf8;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Боковые и нижние карточки: подписи мельче, отступы плотнее. */
+.featured__card .featured__body {
+  gap: 3px;
+  padding: 16px 18px 15px;
+}
+
+.featured__card .featured__name {
+  font-size: 12.5px;
+}
+
+.featured__card .featured__warm {
+  font-size: 13.5px;
+}
+
+.featured__card .featured__spec {
+  font-size: 12px;
+}
+
+.featured__card .featured__price {
+  font-size: 17px;
+}
+
+.featured__card .featured__meta {
+  margin-top: 4px;
+}
+
+.featured__more {
+  margin-top: var(--stack-gap);
+}
+
+.featured__more .btn {
+  min-height: 60px;
+  padding: 17px 30px;
+  border-radius: 14px;
+  font-size: 16.5px;
+  font-weight: 600;
+}
+
+/* --- «Что дальше» ------------------------------------------------------- */
+
+/* Лёгкая вуаль #e9dcc3 по макету — секция остаётся светлой. */
+.section--next {
+  background-image: linear-gradient(
+    180deg,
+    #e9dcc300 0%,
+    #e9dcc3 11.56%,
+    #e9dcc3 88.44%,
+    #e9dcc300 100%
+  );
+}
+
+.cards-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+  margin-top: var(--stack-gap);
+}
+
+.next-card {
+  display: grid;
+  grid-template-rows: 188px 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.next-card--light {
+  background: var(--cream);
+}
+
+.next-card--dark {
+  background: var(--ink);
+}
+
+.next-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.next-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.next-card__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #1b140d00 0%, #1b140db3 100%);
+}
+
+.next-card__body {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 28px 34px 30px;
+}
+
+.next-card--dark .next-card__body {
+  color: #f4ead9;
+}
+
+.next-card__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--gold-deep);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.next-card--dark .next-card__eyebrow {
+  color: var(--gold);
+}
+
+.next-card__title {
+  margin-top: 6px;
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+}
+
+.next-card--dark .next-card__title {
+  color: #f4ead9;
+}
+
+.next-card__sub {
+  margin-top: 8px;
+  color: #6b5f4e;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.next-card--dark .next-card__sub {
+  color: #c9bda8;
+}
+
+.next-card__body .btn--pill {
+  margin-top: 14px;
+  justify-self: start;
+}
+
+.btn--pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 14.8px 26.8px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  background: var(--gold);
+  color: #14100d;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 19px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: filter 0.2s ease, background-color 0.2s ease;
+}
+
+.btn--pill:hover {
+  filter: brightness(1.06);
+}
+
+.btn--outline-gold {
+  border-color: #d4ad6e66;
+  background: transparent;
+  color: var(--gold);
+}
+
+.btn--outline-gold:hover {
+  background: #d4ad6e14;
+}
+
+/* --- Живые кадры с объектов -------------------------------------------- */
+
+.reels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gutter);
+  margin-top: var(--stack-gap);
+}
+
+/* Вертикальные карточки 272.5 × 484.44 из макета (9:16) —
+   здесь позже встанут вертикальные видео с объектов. */
+.reel {
+  position: relative;
+  aspect-ratio: 272.5 / 484.44;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.reel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Скрим из макета: 0 → #0e0a07e0. */
+.reel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, #00000000 0%, #0e0a07e0 100%);
+}
+
+.reel__caption {
+  position: absolute;
+  inset: auto 14px 13px;
+  z-index: 1;
+  color: #ffe5b8;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 18px;
+  text-shadow: 0 1px 10px #000000b3;
+}
+
+/* --- Часть построенных домов ------------------------------------------- */
+
+/* Заголовок и примечание — в одну строку, как в макете. */
+.built__head {
+  display: grid;
+  grid-template-columns: minmax(0, 657fr) minmax(0, 519fr);
+  gap: var(--gutter);
+  align-items: end;
+}
+
+.h2--wide {
+  max-width: none;
+  margin-top: 20px;
+  font-size: 42px;
+  line-height: 1.15;
+}
+
+.built__note {
+  padding-left: 29px;
+  border-left: 0.8px solid #c19a5b2e;
+  color: #6b5f4e;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.built__card {
+  display: grid;
+  grid-template-columns: minmax(0, 771fr) minmax(0, 429fr);
+  gap: 0;
+  margin-top: var(--stack-gap);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background-image: linear-gradient(135deg, #1f1612 0%, #1a1310 50%, #14100d 100%);
+  color: #f3ecdc;
+  box-shadow: 0 26px 60px #3c2a0c3d;
+}
+
+.built__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+}
+
+.built__body {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 34px 40px;
+}
+
+.built__place {
+  color: var(--gold-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.built__size {
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.built__geo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.built__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.built__fact {
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: #c19a5b14;
+  color: #f3ecdc;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.built__fact--muted {
+  color: #c4b89f;
+}
+
+.built__incl {
+  margin-top: 18px;
+}
+
+.built__incl-title {
+  color: #8d8271;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.built__list {
+  display: grid;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.built__list li {
+  position: relative;
+  padding-left: 22px;
+  color: #d8cfba;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.built__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 9px;
+  height: 6px;
+  border-left: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  transform: rotate(-45deg);
+}
+
+.built__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.built__actions .btn {
+  border-radius: var(--r-pill);
+}
+
+.built__actions .btn--pill {
+  border: 1px solid #d4ad6e66;
+  background: transparent;
+  color: var(--gold);
+}
+
+/* --- Футер ------------------------------------------------------------ */
+
+.site-footer {
+  padding: 80px 0 32px;
+  background-image: linear-gradient(180deg, #1a1410 0%, #0c0805 100%),
+    radial-gradient(circle at 50% 0%, #d4ad6e0f 0%, #00000000 100%);
+  border-top: 0.8px solid #c19a5b2e;
+  color: var(--text-on-dark-soft);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.site-footer a {
+  color: var(--text-on-dark-soft);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--gold);
+}
+
+.site-footer__note {
+  margin-top: 18px;
+  color: #8d8271;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.site-footer__privacy {
+  display: inline-block;
+  margin-top: 14px;
+  padding-bottom: 2px;
+  border-bottom: 0.8px solid #c19a5b66;
+  color: var(--gold-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.site-footer__col {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.site-footer__head {
+  margin-bottom: 6px;
+  color: var(--gold-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.site-footer__city {
+  margin-top: 6px;
+  color: var(--gold-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.site-footer__city:first-of-type {
+  margin-top: 0;
+}
+
+.site-footer__venue {
+  margin-top: 6px;
+  color: #a89c8a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.site-footer__social {
+  justify-self: start;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border: 1px solid #c19a5b66;
+  border-radius: var(--r-pill);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.site-footer__disclaimer {
+  max-width: 900px;
+  margin: 32px auto 0;
+  color: #8a7f6e;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.site-footer__copy {
+  margin: 28px auto 0;
+  padding-top: 22px;
+  border-top: 0.8px solid #c19a5b1f;
+  color: #8d8271;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.66px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Адаптив. Макет собран под 1440, но сайт должен не разъезжаться на узких
+   экранах: сетки складываются, шапка сжимается, крупная типографика уменьшается.
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 8px 24px 16px;
+    background: var(--ink);
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav a {
+    min-height: 48px;
+    border-top: 1px solid #fffdf814;
+  }
+
+  .burger {
+    display: inline-flex;
+    align-items: center;
+    margin-inline-start: auto;
+  }
+
+  .site-header__row {
+    position: relative;
+    gap: 12px;
+  }
+
+  .site-header__contacts {
+    gap: 12px;
+  }
+
+  /* Подпись логотипа тянет шапку в две строки — на планшетах она лишняя. */
+  .logo__sub {
+    display: none;
+  }
+
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .bento__photo {
+    height: 320px;
+  }
+
+  .adv-panel {
+    height: auto;
+  }
+
+  .featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 420px;
+  }
+
+  .featured__big {
+    grid-column: 1 / -1;
+  }
+
+  .featured__side {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: 300px;
+    height: auto;
+  }
+
+  .featured__side .featured__card {
+    height: 300px;
+  }
+
+  .featured--row {
+    grid-auto-rows: 320px;
+  }
+
+
+  .catalog__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog .card {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .catalog__photo {
+    height: 380px;
+  }
+
+  .cards-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .built__card {
+    grid-template-columns: 1fr;
+  }
+
+  .built__head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .built__note {
+    max-width: none;
+    margin-top: 18px;
+  }
+
+  .built__media img {
+    min-height: 360px;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --fs-display: 44px;
+    --fs-h2: 32px;
+    --fs-h3: 24px;
+  }
+
+  .site-header__contacts .contact__city {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* На узких экранах CTA сжимается до подписи. */
+  .site-header__contacts .btn--gold {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .site-header__contacts {
+    flex-shrink: 0;
+    gap: 12px;
+  }
+
+  .site-header__contacts .contact {
+    display: none;
+  }
+
+  /* Логотип не должен сжиматься в ноль — в шапке остаются только он и бургер. */
+  .site-header .logo {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .site-header .logo img {
+    width: 136px;
+  }
+
+  .hero {
+    min-height: calc(100svh - var(--header-h));
+  }
+
+  .hero__card {
+    width: 100%;
+    padding: 28px 24px 28px;
+  }
+
+  .hero__title {
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -0.8px;
+  }
+
+  .hero__price {
+    font-size: 30px;
+  }
+
+  .adv-panel__row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .adv-panel__item + .adv-panel__item {
+    padding-left: 14px;
+    border-left: 0;
+    border-top: 1px solid #d4ad6e40;
+    padding-top: 18px;
+  }
+
+  .featured {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .featured--row {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .featured__big {
+    grid-column: auto;
+  }
+
+  .featured__big .featured__figure {
+    height: 380px;
+  }
+
+  .featured__side {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: 300px;
+    height: auto;
+  }
+
+  .featured__side .featured__card {
+    height: 300px;
+  }
+
+  .featured--row .featured__card {
+    height: 300px;
+  }
+
+  .reels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .video-card__media {
+    height: 320px;
+  }
+
+  .video-card__meta {
+    inset: auto 24px 22px;
+  }
+
+  .video-card__title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-card__media {
+    height: 240px;
+  }
+
+  .video-card__cta {
+    margin-top: 6px;
+  }
+
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+}
